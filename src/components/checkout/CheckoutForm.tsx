@@ -4,6 +4,27 @@ import { CreditCard, Truck, ShieldCheck } from 'lucide-react';
 import { useCart } from '../../context/CartContext';
 import { ShippingInfo, PaymentMethod } from '../../types';
 
+// Add this function to send order data to FormPress
+import { CartItem } from '../../types';
+
+interface OrderData {
+  shippingInfo: ShippingInfo;
+  items: CartItem[];
+  paymentMethod: PaymentMethod;
+}
+
+async function sendOrderToFormPress(order: OrderData) {
+  const formPressUrl = 'https://formspree.io/f/meoglrke'; // Replace with your FormPress endpoint
+  const response = await fetch(formPressUrl, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(order),
+  });
+  if (!response.ok) {
+    throw new Error('Failed to send order to FormPress');
+  }
+}
+
 interface CheckoutFormProps {
   onComplete: (shippingInfo: ShippingInfo, paymentMethod: PaymentMethod) => void;
 }
@@ -70,7 +91,7 @@ const CheckoutForm: React.FC<CheckoutFormProps> = ({ onComplete }) => {
     }
   };
   
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     if (items.length === 0) {
@@ -79,7 +100,20 @@ const CheckoutForm: React.FC<CheckoutFormProps> = ({ onComplete }) => {
     }
     
     if (validateForm()) {
-      onComplete(shippingInfo, 'cash_on_delivery');
+      // Prepare order data
+      const orderData = {
+        shippingInfo,
+        items,
+        paymentMethod: "cash_on_delivery" as const,
+      };
+
+      try {
+        await sendOrderToFormPress(orderData);
+        onComplete(shippingInfo, 'cash_on_delivery');
+      } catch (error) {
+        console.error(error);
+        alert('Failed to send order. Please try again.');
+      }
     }
   };
   
