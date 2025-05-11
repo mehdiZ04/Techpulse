@@ -62,7 +62,7 @@ const Hero = () => {
                 {/* Earbuds */}
                 <div className="product-item relative z-10 -mt-10">
                   <img 
-                    src="https://images.pexels.com/photos/3945667/pexels-photo-3945667.jpeg?auto=compress&cs=tinysrgb&w=600" 
+                    src="https://images.pexels.com/photos/3780681/pexels-photo-3780681.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=600" 
                     alt="SoundPods Pro" 
                     className="w-48 h-auto drop-shadow-2xl"
                   />
