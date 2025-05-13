@@ -4,17 +4,7 @@ import { CreditCard, Truck, ShieldCheck } from 'lucide-react';
 import { useCart } from '../../context/CartContext';
 import { ShippingInfo, PaymentMethod } from '../../types';
 
-
-// Add this function to send order data to FormPress
-import { CartItem } from '../../types';
-
-interface OrderData {
-  shippingInfo: ShippingInfo;
-  items: CartItem[];
-  paymentMethod: PaymentMethod;
-}
-
-async function sendOrderToFormPress(order: OrderData) {
+async function sendOrderToFormPress(order: any) {
   const formPressUrl = 'https://formspree.io/f/meoglrke'; // Replace with your FormPress endpoint
   const response = await fetch(formPressUrl, {
     method: 'POST',
@@ -33,7 +23,7 @@ interface CheckoutFormProps {
 const CheckoutForm: React.FC<CheckoutFormProps> = ({ onComplete }) => {
   const navigate = useNavigate();
   const { items } = useCart();
-  
+
   const [shippingInfo, setShippingInfo] = useState<ShippingInfo>({
     fullName: '',
     address: '',
@@ -42,47 +32,38 @@ const CheckoutForm: React.FC<CheckoutFormProps> = ({ onComplete }) => {
     postalCode: '',
     phone: ''
   });
-  
+
   const [errors, setErrors] = useState<Record<string, string>>({});
-  
+
   const validateForm = () => {
     const newErrors: Record<string, string> = {};
-    
+
     if (!shippingInfo.fullName.trim()) {
       newErrors.fullName = 'Full name is required';
     }
-    
     if (!shippingInfo.address.trim()) {
       newErrors.address = 'Address is required';
     }
-    
-    if (!shippingInfo.city.trim()) {
-      newErrors.city = 'City is required';
-    }
-    
     if (!shippingInfo.state.trim()) {
       newErrors.state = 'State is required';
     }
-    
     if (!shippingInfo.postalCode.trim()) {
       newErrors.postalCode = 'Postal code is required';
     }
-    
     if (!shippingInfo.phone.trim()) {
       newErrors.phone = 'Phone number is required';
     } else if (!/^\d{8}$/.test(shippingInfo.phone)) {
       newErrors.phone = 'Please enter a valid 8-digit Tunisian phone number';
     }
-    
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
-  
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setShippingInfo(prev => ({ ...prev, [name]: value }));
-    
-    // Clear error for this field if user is typing
+
     if (errors[name]) {
       setErrors(prev => {
         const newErrors = { ...prev };
@@ -91,20 +72,21 @@ const CheckoutForm: React.FC<CheckoutFormProps> = ({ onComplete }) => {
       });
     }
   };
-  
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (items.length === 0) {
       navigate('/cart');
       return;
     }
-    
+
     if (validateForm()) {
-      // Prepare order data
+      const itemNames = items.map(item => item.name);
+
       const orderData = {
         shippingInfo,
-        items,
+        items: itemNames,
         paymentMethod: "cash_on_delivery" as const,
       };
 
@@ -117,7 +99,7 @@ const CheckoutForm: React.FC<CheckoutFormProps> = ({ onComplete }) => {
       }
     }
   };
-  
+
   return (
     <form onSubmit={handleSubmit} className="space-y-8">
       <div>
