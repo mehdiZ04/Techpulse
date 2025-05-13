@@ -11,7 +11,7 @@ export interface Product {
   specifications: {
     [key: string]: string;
   };
-  stock: number;
+  stock: string;
   reviews: Review[];
   rating: number;
   isNew?: boolean;

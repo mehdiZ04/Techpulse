@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Star, Truck, ShieldCheck, RefreshCw, Minus, Plus, ShoppingCart, Heart, Share2 } from 'lucide-react';
+import { Star, Truck, ShieldCheck, RefreshCw, Minus, Plus, ShoppingCart, Heart } from 'lucide-react';
 import { Product } from '../../types';
 import { useCart } from '../../context/CartContext';
 
@@ -14,9 +14,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ product }) => {
   const { addItem } = useCart();
   
   const handleIncrease = () => {
-    if (quantity < product.stock) {
-      setQuantity(prev => prev + 1);
-    }
+    setQuantity(prev => prev + 1);
   };
   
   const handleDecrease = () => {
@@ -161,10 +159,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ product }) => {
                 
                 <button 
                   onClick={handleIncrease}
-                  disabled={quantity >= product.stock}
-                  className={`w-10 h-10 flex items-center justify-center border border-secondary-300 rounded-r-md ${
-                    quantity >= product.stock ? 'bg-secondary-100 text-secondary-400 cursor-not-allowed' : 'hover:bg-secondary-100'
-                  }`}
+                  className="w-10 h-10 flex items-center justify-center border border-secondary-300 rounded-r-md hover:bg-secondary-100"
                   aria-label="Increase quantity"
                 >
                   <Plus size={18} />
@@ -189,10 +184,8 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ product }) => {
             
             {/* Product Status */}
             <div className="mb-8 text-sm">
-              <p className={`${product.stock > 0 ? 'text-success-600' : 'text-error-600'} font-medium`}>
-                {product.stock > 0 
-                  ? `In Stock (${product.stock} available)` 
-                  : 'Out of Stock'}
+              <p className="text-success-600 font-medium">
+                {product.stock === 'en stock' ? 'In Stock' : 'Out of Stock'}
               </p>
               <p className="text-secondary-500 mt-1">SKU: {product.id}</p>
             </div>
@@ -201,7 +194,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ product }) => {
             <div className="border-t border-secondary-200 pt-6 space-y-4">
               <div className="flex items-center">
                 <Truck className="w-5 h-5 text-secondary-600 mr-3" />
-                <span className="text-secondary-600">Free delivery for orders over $50</span>
+                <span className="text-secondary-600">Free delivery for orders over 50 TND</span>
               </div>
               <div className="flex items-center">
                 <ShieldCheck className="w-5 h-5 text-secondary-600 mr-3" />
