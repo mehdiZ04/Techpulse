@@ -1,5 +1,27 @@
 import { useState } from 'react';
-import { Mail, Phone, MapPin, MessageCircle } from 'lucide-react';
+import { Mail, Phone, MapPin } from 'lucide-react';
+
+// Define the type for the contact form data
+interface ContactFormData {
+  name: string;
+  email: string;
+  phone: string;
+  subject: string;
+  message: string;
+}
+
+// Add this function at the top (after imports)
+async function sendContactToFormPress(formData: ContactFormData) {
+  const formPressUrl = 'https://formspree.io/f/meoglrke'; // Replace with your FormPress endpoint
+  const response = await fetch(formPressUrl, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(formData),
+  });
+  if (!response.ok) {
+    throw new Error('Failed to send message to FormPress');
+  }
+}
 
 const ContactUs = () => {
   const [formData, setFormData] = useState({
@@ -57,14 +79,13 @@ const ContactUs = () => {
     return Object.keys(newErrors).length === 0;
   };
   
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     if (validateForm()) {
       setIsSubmitting(true);
-      
-      // Simulate form submission
-      setTimeout(() => {
+      try {
+        await sendContactToFormPress(formData);
         setIsSubmitting(false);
         setIsSubmitted(true);
         setFormData({
@@ -74,7 +95,10 @@ const ContactUs = () => {
           subject: '',
           message: ''
         });
-      }, 1500);
+      } catch {
+        setIsSubmitting(false);
+        alert('Failed to send message. Please try again.');
+      }
     }
   };
   
@@ -108,7 +132,7 @@ const ContactUs = () => {
                   <div>
                     <h3 className="font-medium text-secondary-900 mb-1">Our Location</h3>
                     <p className="text-secondary-600">
-                      123 Tech Boulevard, Tunis 1002, Tunisia
+                      Ariana centre
                     </p>
                   </div>
                 </div>
@@ -120,11 +144,9 @@ const ContactUs = () => {
                   <div>
                     <h3 className="font-medium text-secondary-900 mb-1">Email Us</h3>
                     <p className="text-secondary-600">
-                      support@techvibe.com
+                      techpulse@gmail.com
                     </p>
-                    <p className="text-secondary-600">
-                      sales@techvibe.com
-                    </p>
+                    
                   </div>
                 </div>
                 
@@ -143,23 +165,7 @@ const ContactUs = () => {
                   </div>
                 </div>
                 
-                <div className="flex items-start">
-                  <div className="bg-accent-100 rounded-full p-3 mr-4">
-                    <MessageCircle className="w-6 h-6 text-accent-600" />
-                  </div>
-                  <div>
-                    <h3 className="font-medium text-secondary-900 mb-1">Business Hours</h3>
-                    <p className="text-secondary-600">
-                      Monday - Friday: 9:00 AM - 6:00 PM
-                    </p>
-                    <p className="text-secondary-600">
-                      Saturday: 10:00 AM - 4:00 PM
-                    </p>
-                    <p className="text-secondary-600">
-                      Sunday: Closed
-                    </p>
-                  </div>
-                </div>
+                
               </div>
             </div>
             
