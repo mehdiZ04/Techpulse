@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronRight, Star } from 'lucide-react';
 import { products } from '../../data/products';
@@ -67,11 +66,11 @@ const FeaturedProducts = () => {
                 <div className="flex items-baseline mb-4">
                   {product.discountPrice ? (
                     <>
-                      <span className="text-error-600 font-semibold">${product.discountPrice}</span>
-                      <span className="text-secondary-400 line-through text-sm ml-2">${product.price}</span>
+                      <span className="text-error-600 font-semibold">TND{product.discountPrice}</span>
+                      <span className="text-secondary-400 line-through text-sm ml-2">TND{product.price}</span>
                     </>
                   ) : (
-                    <span className="text-secondary-900 font-semibold">${product.price}</span>
+                    <span className="text-secondary-900 font-semibold">TND{product.price}</span>
                   )}
                 </div>
                 

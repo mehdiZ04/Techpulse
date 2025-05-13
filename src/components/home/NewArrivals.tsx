@@ -168,11 +168,11 @@ const NewArrivals = () => {
                   <div className="flex items-baseline mb-6">
                     {product.discountPrice ? (
                       <>
-                        <span className="text-error-600 text-2xl font-bold">${product.discountPrice}</span>
-                        <span className="text-secondary-400 line-through ml-3">${product.price}</span>
+                        <span className="text-error-600 text-2xl font-bold">TND{product.discountPrice}</span>
+                        <span className="text-secondary-400 line-through ml-3">TND{product.price}</span>
                       </>
                     ) : (
-                      <span className="text-secondary-900 text-2xl font-bold">${product.price}</span>
+                      <span className="text-secondary-900 text-2xl font-bold">TND{product.price}</span>
                     )}
                   </div>
                   

@@ -62,14 +62,7 @@ const Header = () => {
             >
               Products
             </Link>
-            <Link 
-              to="/about" 
-              className={`font-medium hover:text-accent-600 transition-colors ${
-                location.pathname === '/about' ? 'text-accent-600' : 'text-secondary-800'
-              }`}
-            >
-              About Us
-            </Link>
+            
             <Link 
               to="/contact" 
               className={`font-medium hover:text-accent-600 transition-colors ${

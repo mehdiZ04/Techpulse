@@ -27,7 +27,8 @@ export const products: Product[] = [
       '/air3.jpg'
     ],
     colors: ['#FFFFFF'],
-    description: 'Experience the next level of active noise cancellation with the AirPods Pro. Featuring personalized spatial audio, adaptive transparency, and all-day comfort, these premium earbuds deliver an unmatched listening experience.',
+    
+    description: 'The all-new AirPods deliver an unparalleled wireless experience. With spatial audio, longer battery life, and an all-new contoured design, they\'re perfect for all-day listening.',
     features: [
       'Active Noise Cancellation',
       'Adaptive Transparency mode',
@@ -79,7 +80,7 @@ export const products: Product[] = [
       '/pro3.jpg'
     ],
     colors: ['#FFFFFF'],
-    description: 'The all-new AirPods deliver an unparalleled wireless experience. With spatial audio, longer battery life, and an all-new contoured design, they\'re perfect for all-day listening.',
+    description: 'Experience the next level of active noise cancellation with the AirPods Pro. Featuring personalized spatial audio, adaptive transparency, and all-day comfort, these premium earbuds deliver an unmatched listening experience.',
     features: [
       'Spatial audio with dynamic head tracking',
       'Adaptive EQ',

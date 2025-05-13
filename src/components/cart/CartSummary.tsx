@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
 
@@ -20,17 +19,17 @@ const CartSummary: React.FC<CartSummaryProps> = ({ showCheckoutButton = true }) 
       <div className="space-y-4">
         <div className="flex justify-between text-secondary-600">
           <span>Items ({itemCount})</span>
-          <span>${subtotal.toFixed(2)}</span>
+          <span>TND{subtotal.toFixed(2)}</span>
         </div>
         
         <div className="flex justify-between text-secondary-600">
           <span>Shipping</span>
-          <span>${shippingCost.toFixed(2)}</span>
+          <span>TND{shippingCost.toFixed(2)}</span>
         </div>
         
         <div className="border-t border-secondary-200 pt-4 flex justify-between font-semibold text-lg text-secondary-900">
           <span>Total</span>
-          <span>${total.toFixed(2)}</span>
+          <span>TND{total.toFixed(2)}</span>
         </div>
       </div>
       

@@ -72,7 +72,7 @@ const OrderConfirmation = () => {
                   <h4 className="text-secondary-900 font-medium">{item.name}</h4>
                   <div className="flex justify-between items-center mt-1">
                     <span className="text-secondary-500">Qty: {item.quantity}</span>
-                    <span className="text-secondary-900">${(item.price * item.quantity).toFixed(2)}</span>
+                    <span className="text-secondary-900">TND{(item.price * item.quantity).toFixed(2)}</span>
                   </div>
                 </div>
               </div>
@@ -82,17 +82,17 @@ const OrderConfirmation = () => {
           <div className="border-t border-secondary-200 pt-4 space-y-3">
             <div className="flex justify-between text-secondary-600">
               <span>Subtotal</span>
-              <span>${order.subtotal.toFixed(2)}</span>
+              <span>TND{order.subtotal.toFixed(2)}</span>
             </div>
             
             <div className="flex justify-between text-secondary-600">
               <span>Shipping</span>
-              <span>${order.shippingCost.toFixed(2)}</span>
+              <span>TND{order.shippingCost.toFixed(2)}</span>
             </div>
             
             <div className="border-t border-secondary-200 pt-3 flex justify-between font-semibold text-lg text-secondary-900">
               <span>Total</span>
-              <span>${order.total.toFixed(2)}</span>
+              <span>TND{order.total.toFixed(2)}</span>
             </div>
           </div>
         </div>

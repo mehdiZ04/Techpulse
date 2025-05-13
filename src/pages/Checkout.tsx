@@ -4,8 +4,7 @@ import { ArrowLeft } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { ShippingInfo, PaymentMethod, Order } from '../types';
 import CheckoutForm from '../components/checkout/CheckoutForm';
-import CartSummary from '../components/cart/CartSummary';
-import CartItem from '../components/cart/CartItem';
+
 
 const Checkout = () => {
   const navigate = useNavigate();
@@ -95,7 +94,7 @@ const Checkout = () => {
                       <h4 className="text-secondary-900 font-medium">{item.name}</h4>
                       <div className="flex justify-between items-center mt-1">
                         <span className="text-secondary-500">Qty: {item.quantity}</span>
-                        <span className="text-secondary-900">${(item.price * item.quantity).toFixed(2)}</span>
+                        <span className="text-secondary-900">{(item.price * item.quantity).toFixed(2)}TND</span>
                       </div>
                     </div>
                   </div>
@@ -105,17 +104,17 @@ const Checkout = () => {
               <div className="space-y-3">
                 <div className="flex justify-between text-secondary-600">
                   <span>Subtotal</span>
-                  <span>${subtotal.toFixed(2)}</span>
+                  <span>{subtotal.toFixed(2)}TND</span>
                 </div>
                 
                 <div className="flex justify-between text-secondary-600">
                   <span>Shipping</span>
-                  <span>$15.00</span>
+                  <span>7.00TND</span>
                 </div>
                 
                 <div className="border-t border-secondary-200 pt-3 flex justify-between font-semibold text-lg text-secondary-900">
                   <span>Total</span>
-                  <span>${(subtotal + 15).toFixed(2)}</span>
+                  <span>{(subtotal + 15).toFixed(2)}TND</span>
                 </div>
               </div>
             </div>

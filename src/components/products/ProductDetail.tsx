@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Star, Truck, ShieldCheck, RefreshCw, Minus, Plus, ShoppingCart, Heart } from 'lucide-react';
+import { Star, Truck, ShieldCheck, RefreshCw, Minus, Plus, ShoppingCart } from 'lucide-react';
 import { Product } from '../../types';
 import { useCart } from '../../context/CartContext';
 
@@ -96,18 +96,18 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ product }) => {
               {product.discountPrice ? (
                 <div className="flex items-center">
                   <span className="text-3xl font-bold text-error-600">
-                    ${product.discountPrice}
+                    TND{product.discountPrice}
                   </span>
                   <span className="ml-3 text-xl text-secondary-400 line-through">
-                    ${product.price}
+                    TND{product.price}
                   </span>
                   <span className="ml-3 px-2 py-1 bg-error-100 text-error-700 text-sm font-medium rounded">
-                    Save ${(product.price - product.discountPrice).toFixed(2)}
+                    Save TND{(product.price - product.discountPrice).toFixed(2)}
                   </span>
                 </div>
               ) : (
                 <span className="text-3xl font-bold text-secondary-900">
-                  ${product.price}
+                  TND{product.price}
                 </span>
               )}
             </div>
@@ -176,10 +176,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ product }) => {
                 Add to Cart
               </button>
               
-              <button className="btn btn-outline w-full sm:w-auto">
-                <Heart size={20} className="mr-2" />
-                Add to Wishlist
-              </button>
+              
             </div>
             
             {/* Product Status */}
@@ -206,21 +203,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ product }) => {
               </div>
             </div>
             
-            {/* Share */}
-            <div className="flex items-center mt-6">
-              <span className="text-secondary-600 mr-3">Share:</span>
-              <div className="flex space-x-2">
-                <button className="w-8 h-8 rounded-full bg-secondary-100 flex items-center justify-center hover:bg-secondary-200 transition-colors" aria-label="Share on Facebook">
-                  <i className="text-secondary-600">f</i>
-                </button>
-                <button className="w-8 h-8 rounded-full bg-secondary-100 flex items-center justify-center hover:bg-secondary-200 transition-colors" aria-label="Share on Twitter">
-                  <i className="text-secondary-600">t</i>
-                </button>
-                <button className="w-8 h-8 rounded-full bg-secondary-100 flex items-center justify-center hover:bg-secondary-200 transition-colors" aria-label="Share on Instagram">
-                  <i className="text-secondary-600">i</i>
-                </button>
-              </div>
-            </div>
+            
           </div>
         </div>
         

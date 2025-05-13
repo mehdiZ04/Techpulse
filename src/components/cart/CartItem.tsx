@@ -73,7 +73,7 @@ const CartItem: React.FC<CartItemProps> = ({ item }) => {
       {/* Price & Remove */}
       <div className="sm:ml-6 flex items-center justify-between w-full sm:w-auto mt-4 sm:mt-0">
         <span className="text-lg font-medium text-secondary-900 sm:ml-8">
-          ${(item.price * item.quantity).toFixed(2)}
+          TND{(item.price * item.quantity).toFixed(2)}
         </span>
         
         <button 

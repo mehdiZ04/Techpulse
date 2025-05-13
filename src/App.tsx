@@ -7,7 +7,7 @@ import ProductDetail from './pages/ProductDetail';
 import CartPage from './pages/CartPage';
 import Checkout from './pages/Checkout';
 import OrderConfirmation from './pages/OrderConfirmation';
-import AboutUs from './pages/AboutUs';
+
 import ContactUs from './pages/ContactUs';
 import FAQs from './pages/FAQs';
 import NotFound from './pages/NotFound';
@@ -30,7 +30,7 @@ function App() {
             <Route path="/cart" element={<CartPage />} />
             <Route path="/checkout" element={<Checkout />} />
             <Route path="/order-confirmation" element={<OrderConfirmation />} />
-            <Route path="/about" element={<AboutUs />} />
+            
             <Route path="/contact" element={<ContactUs />} />
             <Route path="/faqs" element={<FAQs />} />
             <Route path="*" element={<NotFound />} />

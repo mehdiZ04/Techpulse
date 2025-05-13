@@ -4,6 +4,7 @@ import { CreditCard, Truck, ShieldCheck } from 'lucide-react';
 import { useCart } from '../../context/CartContext';
 import { ShippingInfo, PaymentMethod } from '../../types';
 
+
 // Add this function to send order data to FormPress
 import { CartItem } from '../../types';
 
@@ -160,24 +161,6 @@ const CheckoutForm: React.FC<CheckoutFormProps> = ({ onComplete }) => {
           </div>
           
           <div>
-            <label htmlFor="city" className="block text-sm font-medium text-secondary-700 mb-2">
-              City *
-            </label>
-            <input
-              type="text"
-              id="city"
-              name="city"
-              value={shippingInfo.city}
-              onChange={handleChange}
-              className={`input ${errors.city ? 'border-error-500 focus:ring-error-500' : ''}`}
-              placeholder="Enter your city"
-            />
-            {errors.city && (
-              <p className="mt-1 text-sm text-error-600">{errors.city}</p>
-            )}
-          </div>
-          
-          <div>
             <label htmlFor="state" className="block text-sm font-medium text-secondary-700 mb-2">
               State/Governorate *
             </label>
@@ -194,9 +177,25 @@ const CheckoutForm: React.FC<CheckoutFormProps> = ({ onComplete }) => {
               <option value="Ben Arous">Ben Arous</option>
               <option value="Manouba">Manouba</option>
               <option value="Nabeul">Nabeul</option>
+              <option value="Zaghouan">Zaghouan</option>
+              <option value="Bizerte">Bizerte</option>
+              <option value="Béja">Béja</option>
+              <option value="Jendouba">Jendouba</option>
+              <option value="Le Kef">Le Kef</option>
+              <option value="Siliana">Siliana</option>
               <option value="Sousse">Sousse</option>
               <option value="Monastir">Monastir</option>
+              <option value="Mahdia">Mahdia</option>
               <option value="Sfax">Sfax</option>
+              <option value="Kairouan">Kairouan</option>
+              <option value="Kasserine">Kasserine</option>
+              <option value="Sidi Bouzid">Sidi Bouzid</option>
+              <option value="Gabès">Gabès</option>
+              <option value="Medenine">Medenine</option>
+              <option value="Tataouine">Tataouine</option>
+              <option value="Gafsa">Gafsa</option>
+              <option value="Tozeur">Tozeur</option>
+              <option value="Kebili">Kebili</option>
               <option value="Other">Other</option>
             </select>
             {errors.state && (
@@ -272,7 +271,7 @@ const CheckoutForm: React.FC<CheckoutFormProps> = ({ onComplete }) => {
       <div className="bg-secondary-50 p-4 rounded-lg space-y-2">
         <div className="flex items-center text-sm text-secondary-600">
           <Truck className="w-4 h-4 mr-2 text-accent-600" />
-          <span>Free shipping for orders over $50</span>
+          <span>Free shipping for orders over 50TND</span>
         </div>
         <div className="flex items-center text-sm text-secondary-600">
           <ShieldCheck className="w-4 h-4 mr-2 text-accent-600" />
