@@ -195,7 +195,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ product }) => {
               </div>
               <div className="flex items-center">
                 <ShieldCheck className="w-5 h-5 text-secondary-600 mr-3" />
-                <span className="text-secondary-600">2-year warranty on all products</span>
+                <span className="text-secondary-600">6-months warranty on all products</span>
               </div>
               <div className="flex items-center">
                 <RefreshCw className="w-5 h-5 text-secondary-600 mr-3" />
@@ -212,8 +212,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ product }) => {
           <div className="border-b border-secondary-200">
             <div className="flex overflow-x-auto hide-scrollbar">
               <button className="px-8 py-4 font-medium text-accent-600 border-b-2 border-accent-600">Description</button>
-              <button className="px-8 py-4 font-medium text-secondary-600 border-b-2 border-transparent hover:text-secondary-900 hover:border-secondary-300">Specifications</button>
-              <button className="px-8 py-4 font-medium text-secondary-600 border-b-2 border-transparent hover:text-secondary-900 hover:border-secondary-300">Reviews ({product.reviews.length})</button>
+              
             </div>
           </div>
           

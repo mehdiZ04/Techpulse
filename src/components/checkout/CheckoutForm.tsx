@@ -4,7 +4,7 @@ import { CreditCard, Truck, ShieldCheck } from 'lucide-react';
 import { useCart } from '../../context/CartContext';
 import { ShippingInfo, PaymentMethod } from '../../types';
 
-async function sendOrderToFormPress(order: any) {
+async function sendOrderToFormPress(order: { shippingInfo: ShippingInfo; items: string[]; paymentMethod: PaymentMethod }) {
   const formPressUrl = 'https://formspree.io/f/meoglrke'; // Replace with your FormPress endpoint
   const response = await fetch(formPressUrl, {
     method: 'POST',
