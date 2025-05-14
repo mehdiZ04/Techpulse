@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://techpulse-five.vercel.app/sitemap.xml
